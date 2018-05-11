@@ -44,8 +44,9 @@ export default {
 
     addMoreImgs(){
 
-      let defaultUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=41d6e7052ef2abb97f661d5abdaf1026&tags=" + this.inputSearchStr + "&per_page=4&format=json&nojsoncallback=1";
-      let searchByTitleAndTagsUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=41d6e7052ef2abb97f661d5abdaf1026&text=" + this.inputSearchStr + "&per_page=4&format=json&nojsoncallback=1";
+      // IF THERE ARE NO PHOTOS ON THE SCREEN IS BECAUSE MY API KEY IS EXPIRED. THIS HAPPENED ONCE WHILE I WAS DEVELOPING THE APP AND I HAD TO MAKE MYSELF A NEW API KEY.
+      let defaultUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a779e9b7d9a5c0be99a4d19e541494ed&tags=" + this.inputSearchStr + "&per_page=4&format=json&nojsoncallback=1";
+      let searchByTitleAndTagsUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a779e9b7d9a5c0be99a4d19e541494ed&text=" + this.inputSearchStr + "&per_page=4&format=json&nojsoncallback=1";
 
       if(this.titleSearch){
           defaultUrl = searchByTitleAndTagsUrl;
@@ -61,7 +62,7 @@ export default {
           let currentImgId = data.photos.photo[i].id;
 
           $.ajax({
-            url: 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=41d6e7052ef2abb97f661d5abdaf1026&photo_id=' + currentImgId + '&format=json&nojsoncallback=1',
+            url: 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=a779e9b7d9a5c0be99a4d19e541494ed&photo_id=' + currentImgId + '&format=json&nojsoncallback=1',
             dataType: 'json'
           }).then((data) => {
             this.currentImages.push(data);
